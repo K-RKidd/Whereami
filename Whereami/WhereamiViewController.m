@@ -55,6 +55,9 @@
     //Tell our manager to start looking for its location right away
     [worldView setShowsUserLocation:YES];
     
+    //*Assignment* Only update when moved 50 meters
+    [locationManager setDistanceFilter: 50.0];
+    
 }
 
 

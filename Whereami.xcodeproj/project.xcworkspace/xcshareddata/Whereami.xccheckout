@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AAF5BC6F-0FE5-4ECF-93AC-5B84337C73A6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Whereami</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B176B5B0-1A58-4C55-8106-66E8407E66B2</key>
+		<string>https://github.com/K-RKidd/Whereami.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Whereami.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B176B5B0-1A58-4C55-8106-66E8407E66B2</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/K-RKidd/Whereami.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B176B5B0-1A58-4C55-8106-66E8407E66B2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B176B5B0-1A58-4C55-8106-66E8407E66B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Whereami</string>
+		</dict>
+	</array>
+</dict>
+</plist>

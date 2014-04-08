@@ -12,7 +12,9 @@
 @interface WhereamiViewController ()
 
 @end
-
+NSString *const WhereamiMapTypePrefKey = @"WhereamiMapTypePrefKey";
+NSString * const WhereamiLatitudePrefKey = @"WhereamiLatitudePrefKey";
+NSString * const WhereamiLongitudePrefKey = @"WhereamiLongitudePrefKey";
 @implementation WhereamiViewController
 
 -(void) findLocation
@@ -38,6 +40,28 @@
     [activityIndicator stopAnimating];
     [locationTitleField setHidden:NO];
     [locationManager stopUpdatingLocation];
+    [[NSUserDefaults standardUserDefaults] setDouble:coord.latitude
+                                              forKey:WhereamiLatitudePrefKey];
+    [[NSUserDefaults standardUserDefaults] setDouble:coord.longitude
+                                              forKey:WhereamiLongitudePrefKey];
+}
+
+- (IBAction)changeMapType:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setInteger:[sender selectedSegmentIndex] forKey:WhereamiMapTypePrefKey];
+    switch ([sender selectedSegmentIndex]) {
+        case 0:
+        {
+            [worldView setMapType:MKMapTypeStandard];
+        }break;
+        case 1:
+        {
+            [worldView setMapType:MKMapTypeSatellite];
+        }break;
+        case 2:
+        {
+            [worldView setMapType:MKMapTypeHybrid];
+        }break;
+    }
 }
 
 - (void)viewDidLoad
@@ -57,6 +81,21 @@
     
     //*Assignment* Only update when moved 50 meters
     [locationManager setDistanceFilter: 50.0];
+    
+    NSInteger mapTypeValue = [[NSUserDefaults standardUserDefaults]integerForKey:WhereamiMapTypePrefKey];
+    
+    //Update the UI
+    [mapTypeControl setSelectedSegmentIndex:mapTypeValue];
+    
+    //Update the map
+    [self changeMapType:mapTypeControl];
+    
+    double savedLatitude = [[NSUserDefaults standardUserDefaults] doubleForKey:WhereamiLatitudePrefKey];
+    double savedLongitude = [[NSUserDefaults standardUserDefaults] doubleForKey:WhereamiLongitudePrefKey];
+    CLLocationCoordinate2D savedCoordinate = CLLocationCoordinate2DMake(savedLatitude, savedLongitude);
+    
+    MKCoordinateRegion savedRegion = MKCoordinateRegionMakeWithDistance(savedCoordinate, 250, 250);
+    [worldView setRegion:savedRegion animated:YES];
     
 }
 
@@ -106,7 +145,18 @@
 - (BOOL) textFieldShouldReturn:(UITextField *)textField{
     [self findLocation];
     [textField resignFirstResponder];
-    return YES;
+    return YES;}
+
++(void)initialize {
+  //  NSDictionary *defaults = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:WhereamiMapTypePrefKey];
+    NSNumber *defaultLatitude = [NSNumber numberWithDouble:37.331789];
+    NSNumber *defaultLongitude = [NSNumber numberWithDouble:-122.029620];
+    NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                              defaultLatitude, WhereamiLatitudePrefKey,
+                              defaultLongitude, WhereamiLongitudePrefKey,
+                              [NSNumber numberWithInt:1], WhereamiMapTypePrefKey,
+                              nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }
 
 @end

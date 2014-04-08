@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9c2-FS-cFA">
-                                <rect key="frame" x="0.0" y="-60" width="320" height="628"/>
+                                <rect key="frame" x="0.0" y="-60" width="320" height="589"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="S0F-qE-PKM"/>
@@ -39,12 +39,25 @@
                                     <constraint firstAttribute="width" constant="20" id="X8A-tt-E1x"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VZ5-il-mIj">
+                                <rect key="frame" x="48" y="440" width="235" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satelite"/>
+                                    <segment title="Both"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeMapType:" destination="vXZ-lx-hvc" eventType="valueChanged" id="h0l-wP-Iwu"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="j7o-6R-OUu" id="yLy-5d-fXO"/>
                         <outlet property="locationTitleField" destination="uf1-1z-f4Z" id="t5F-k0-4qZ"/>
+                        <outlet property="mapTypeControl" destination="VZ5-il-mIj" id="uit-hG-08d"/>
                         <outlet property="worldView" destination="9c2-FS-cFA" id="kqd-ku-iF8"/>
                     </connections>
                 </viewController>

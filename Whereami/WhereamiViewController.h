@@ -15,10 +15,12 @@
     CLLocationManager *locationManager;
     IBOutlet MKMapView *worldView;
     IBOutlet UIActivityIndicatorView * activityIndicator;
+    __weak IBOutlet UISegmentedControl *mapTypeControl;
     IBOutlet UITextField *locationTitleField;
     
 }
 -(void) findLocation;
 -(void) foundLocation: (CLLocation *) loc;
 
+- (IBAction)changeMapType:(id)sender;
 @end
